@@ -15,6 +15,9 @@
             "4.x-dev": "4.2.x-dev",
             "dev-master": "5.x-dev"
         },
+        "expose": [
+            "themes/base/dist"
+        ],
         "project-files-installed": [
             "mysite/.htaccess",
             "mysite/_config.php",

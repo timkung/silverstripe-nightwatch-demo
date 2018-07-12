@@ -1,5 +1,7 @@
 /.env
+/node_modules/
 /public/resources/
 /resources/
 /silverstripe-cache/
 /vendor/
+/yarn-error.log
