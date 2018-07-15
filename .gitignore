@@ -2,6 +2,7 @@
 /app/tests/nightwatch_reports/
 /app/tests/nightwatch_screenshots/
 /node_modules/
+/public/assets/
 /public/resources/
 /resources/
 /silverstripe-cache/

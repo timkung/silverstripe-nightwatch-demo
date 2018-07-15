@@ -14,10 +14,14 @@ class PageController extends ContentController
      */
     private static $allowed_actions = [];
 
+    /**
+     * @return void
+     */
     protected function init()
     {
         parent::init();
 
+        // pull in theme styles
         Requirements::css('themes/base/dist/main.css');
     }
 }
