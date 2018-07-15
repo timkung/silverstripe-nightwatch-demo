@@ -10,9 +10,9 @@
       <div>
         <% if $Results %>
           <h2>Top results for &quot;{$Query.XML}&quot;</h2>
-          <ul>
+          <ul class="results">
             <% loop $Results %>
-              <li>
+              <li class="results__item">
                 <% include RestaurantData %>
               </li>
             <% end_loop %>

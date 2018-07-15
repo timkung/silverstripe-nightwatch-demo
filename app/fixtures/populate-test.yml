@@ -1,0 +1,5 @@
+RestaurantPage:
+  restaurantsearch:
+    Title: "Restaurant Search"
+    URLSegment: "restaurant-search"
+    ParentID: 0
