@@ -1,0 +1,8 @@
+---
+Name: mytests
+Only:
+  environment: test
+---
+SilverStripe\Core\Injector\Injector:
+  MyApp\Services\ZomatoService:
+    class: MyApp\TestServices\ZomatoServiceFake

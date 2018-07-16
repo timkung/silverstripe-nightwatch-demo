@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
+  <% include Header %>
   <main>
     $Layout
   </main>

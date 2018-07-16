@@ -10,11 +10,15 @@
   "scripts": {
     "once": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "dev": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "prod": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "nightwatch": "nightwatch"
   },
   "devDependencies": {
     "bootstrap": "^4.1.1",
+    "chromedriver": "^2.40.0",
     "cross-env": "^5.2.0",
-    "laravel-mix": "^2.1.11"
+    "laravel-mix": "^2.1.11",
+    "nightwatch": "^0.9.21",
+    "selenium-server": "^3.13.0"
   }
 }

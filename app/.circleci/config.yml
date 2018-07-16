@@ -1,0 +1,70 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: bmanu/silverstripe-web-node:7.1-platform-java
+        environment:
+          - SS_DATABASE_CLASS=MySQLDatabase
+          - SS_DATABASE_SERVER=127.0.0.1
+          - SS_DATABASE_USERNAME=root
+          - SS_DATABASE_PASSWORD=ubuntu
+          - SS_DATABASE_NAME=circle_test
+          - SS_ENVIRONMENT_TYPE=test
+          - SS_DEFAULT_ADMIN_USERNAME=admin
+          - SS_DEFAULT_ADMIN_PASSWORD=password
+      - image: circleci/mysql:5.7
+        environment:
+          - MYSQL_USER=root
+          - MYSQL_ROOT_PASSWORD=ubuntu
+          - MYSQL_DATABASE=circle_test
+          - MYSQL_HOST=127.0.0.1
+
+    working_directory: ~/var/www
+
+    branches:
+      only:
+        - master
+        - develop
+        - /feature.*/
+        - /step.*/
+
+    steps:
+      - checkout
+
+      # download and cache composer dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "composer.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-composer-
+
+      - run: composer install -n --prefer-dist
+
+      - save_cache:
+          paths:
+            - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
+
+      # run php tests
+      - run: vendor/bin/phpunit -d memory_limit=512M
+
+      # download and cache yarn dependencies
+      - restore_cache:
+          keys:
+            - v1-yarn-{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-yarn-
+
+      - run: yarn install
+
+      # run e2e tests
+      - run: yarn nightwatch
+
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: v1-yarn-{{ checksum "yarn.lock" }}
