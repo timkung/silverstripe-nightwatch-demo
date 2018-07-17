@@ -1,4 +1,4 @@
-RestaurantPage:
+MyApp\PageTypes\RestaurantPage:
   restaurantsearch:
     Title: "Restaurant Search"
     URLSegment: "restaurant-search"

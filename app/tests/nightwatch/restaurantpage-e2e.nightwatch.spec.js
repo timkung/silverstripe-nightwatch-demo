@@ -1,9 +1,4 @@
 module.exports = {
-  before: (browser) => {
-    browser.url(browser.launchUrl + '/dev/build');
-    browser.url(browser.launchUrl + '/dev/tasks/DNADesign-Populate-PopulateTask');
-  },
-
   'Test restaurant form': (browser) => {
     // load the restaurant page
     browser
